@@ -1,0 +1,71 @@
+The hiring team aims to find 3 candidates who are great collectively. Each candidate has his or her ability expressed as an integer. 3 candidates are great collectively if the product of their abilities is maximum. Given the abilities of some candidates in an array, arr[], return the maximum collective ability from the pool of candidates.
+
+Examples:
+
+Input: arr[] = [10, 3, 5, 6, 20]
+Output: 1200
+Explanation: Multiplication of 10, 6, and 20 is 1200.
+Input: arr[] = [-10, -3, -5, -6, -20]
+Output: -90
+Explanation: Multiplication of -3, -5 and -6 is -90.
+
+
+
+
+
+
+
+
+
+//{ Driver Code Starts
+// Initial template for C++
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+// User function template for C++
+
+class Solution {
+  public:
+    long long maxProduct(vector<int> arr) {
+        // code here
+        long long  n=arr.size();
+        if(n<3)
+        {
+            return -1;
+        }
+        
+        sort(arr.begin(),arr.end());
+        
+        long long product1= arr[n-1]*arr[n-2]*arr[n-3];
+        
+        long long product2=arr[0]*arr[1]*arr[n-1];
+        
+        return max(product1,product2);
+        // return product1;
+        }
+};
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    cin.ignore();
+    while (t--) {
+        vector<int> arr;
+        string input;
+        getline(cin, input); // Read the entire line for the array elements
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
+        }
+        Solution ob;
+        auto ans = ob.maxProduct(arr);
+        cout << ans << "\n";
+        cout << "~" << endl;
+    }
+    return 0;
+}
+// } Driver Code Ends
