@@ -16,56 +16,28 @@ Explanation: Multiplication of -3, -5 and -6 is -90.
 
 
 
-
-//{ Driver Code Starts
-// Initial template for C++
-#include <bits/stdc++.h>
-using namespace std;
+THIS IS BURT-FORCE APPROCH
 
 
-// } Driver Code Ends
-// User function template for C++
-
-class Solution {
-  public:
-    long long maxProduct(vector<int> arr) {
-        // code here
-        long long  n=arr.size();
+        int  n=arr.size();
+        int max_product=INT_MIN;
         if(n<3)
         {
             return -1;
         }
         
-        sort(arr.begin(),arr.end());
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                for(int k=j+1;k<n;k++)
+                {
+                    int product=arr[i]*arr[j]*arr[k];
+                    max_product= max(max_product,product);
+                }
+            }
+        }
         
-        long long product1= arr[n-1]*arr[n-2]*arr[n-3];
-        
-        long long product2=arr[0]*arr[1]*arr[n-1];
-        
-        return max(product1,product2);
+        return max_product;
         // return product1;
         }
-};
-
-//{ Driver Code Starts.
-int main() {
-    int t;
-    cin >> t;
-    cin.ignore();
-    while (t--) {
-        vector<int> arr;
-        string input;
-        getline(cin, input); // Read the entire line for the array elements
-        stringstream ss(input);
-        int number;
-        while (ss >> number) {
-            arr.push_back(number);
-        }
-        Solution ob;
-        auto ans = ob.maxProduct(arr);
-        cout << ans << "\n";
-        cout << "~" << endl;
-    }
-    return 0;
-}
-// } Driver Code Ends
