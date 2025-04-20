@@ -1,0 +1,30 @@
+
+struct Node {
+    int data;
+    struct Node* next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+class Solution {
+  public:
+    // Function to check if two linked lists are identical
+    bool areIdentical(struct Node *head1, struct Node *head2) {
+        // code here
+        Node* temp=head1;
+        Node*  temp2=head2;
+        while(temp!=NULL && temp2!=NULL)
+        {
+            if(temp->data!=temp2->data)
+            return 0;
+            
+            temp=temp->next;
+            temp2=temp2->next;
+            
+        }
+           return (temp==NULL && temp2==NULL);
+    }
+};
