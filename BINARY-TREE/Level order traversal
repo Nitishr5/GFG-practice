@@ -1,0 +1,46 @@
+/* A binary tree Node
+class Node {
+  public:
+    int data;
+    Node* left;
+    Node* right;
+
+    // Constructor
+    Node(int val) {
+        data = val;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+*/
+
+class Solution {
+  public:
+    vector<vector<int>> levelOrder(Node *root) {
+        // Your code here
+             vector<vector<int>> result;
+        if (root == NULL) return result;
+
+        queue<Node*> q;
+        q.push(root);
+
+        while (!q.empty()) {
+            int size = q.size();
+            vector<int> level;
+
+            for (int i = 0; i < size; i++) {
+                Node* front = q.front();
+                q.pop();
+                level.push_back(front->data); // <-- fixed this line
+
+                if (front->left)
+                    q.push(front->left);
+                if (front->right)
+                    q.push(front->right);
+            }
+            result.push_back(level);
+        }
+        return result;
+        
+    }
+};
