@@ -1,0 +1,44 @@
+Examples:
+
+Input:
+Given Tree is 
+               4
+             /   \
+            8     10
+           /     /   \
+          7     5     1
+         /
+        3 
+
+Output: 3
+Explanation: Three leaves are 3, 5 and 1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution {
+  public:
+    // Function to count the number of leaf nodes in a binary tree.
+    int countLeaves(Node* root) {
+        //Base case 
+        if (root == nullptr)
+            return 0;
+
+        // If it's a leaf node
+        if (root->left == nullptr && root->right == nullptr)
+            return 1;
+
+        // Otherwise, count leaves in left and right subtrees
+        //ek case solve kr do baaki recursion sambhal lega
+        return countLeaves(root->left) + countLeaves(root->right);
+    }
+};
