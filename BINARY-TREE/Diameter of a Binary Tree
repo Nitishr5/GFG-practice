@@ -105,3 +105,152 @@ class Solution {
         return diameterFast(root).first;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+DRY RUN WITH EXAMPLE==================>>>>
+
+    1
+   / \
+  2   3
+🔍 Dry Run Step-by-Step:
+We’ll do a post-order traversal (left, right, root).
+
+📍 Call: diameterFast(2)
+Node 2 has no children.
+
+Call: diameterFast(NULL) → returns {0, 0}
+
+Call: diameterFast(NULL) → returns {0, 0}
+
+left = {0, 0}, right = {0, 0}
+
+op1 = 0, op2 = 0, op3 = 0 + 0 = 0
+
+Diameter at node 2 = max(0, 0, 0) = 0
+
+Height at node 2 = max(0, 0) + 1 = 1
+
+Returns: {0, 1}
+
+📍 Call: diameterFast(3)
+Same logic as node 2 (no children)
+
+Returns: {0, 1}
+
+📍 Call: diameterFast(1)
+left = {0, 1} (from node 2)
+
+right = {0, 1} (from node 3)
+
+op1 = 0, op2 = 0, op3 = 1 + 1 = 2
+
+Diameter at node 1 = max(0, 0, 2) = 2
+
+Height at node 1 = max(1, 1) + 1 = 2
+
+Returns: {2, 2}
+
+✅ Final Output:
+
+diameter(root) = 2
+Which is correct — longest path is 2 - 1 - 3 → 2 edges
+
+
+
+Example 2===>>
+
+
+       5
+      / \
+     8   6
+    / \   \
+   3   7   9
+
+🌳 Node Structure Recap
+Each node stores:
+
+.first = diameter (max edges in longest path in its subtree)
+
+.second = height (in nodes)
+
+Let’s now dry run the diameterFast(root) function on this tree step-by-step.
+
+🧪 Dry Run (Post-order Traversal)
+📍 diameterFast(3) (leaf node)
+left = {0, 0}, right = {0, 0}
+
+op3 = 0 + 0 = 0
+
+diameter = max(0, 0, 0) = 0
+
+height = max(0, 0) + 1 = 1
+➡️ return {0, 1}
+
+📍 diameterFast(7) (leaf node)
+Same as above → {0, 1}
+
+📍 diameterFast(8)
+left = diameterFast(3) = {0, 1}
+
+right = diameterFast(7) = {0, 1}
+
+op1 = 0, op2 = 0, op3 = 1 + 1 = 2
+
+diameter = max(0, 0, 2) = 2
+
+height = max(1, 1) + 1 = 2
+➡️ return {2, 2}
+
+📍 diameterFast(9) (leaf node)
+returns {0, 1}
+
+📍 diameterFast(6)
+left = {0, 0} (no left child)
+
+right = {0, 1} (from node 9)
+
+op3 = 0 + 1 = 1
+
+diameter = max(0, 0, 1) = 1
+
+height = max(0, 1) + 1 = 2
+➡️ return {1, 2}
+
+📍 diameterFast(5) (root)
+left = {2, 2} (from node 8)
+
+right = {1, 2} (from node 6)
+
+op3 = 2 + 2 = 4
+
+diameter = max(2, 1, 4) = 4
+
+height = max(2, 2) + 1 = 3
+➡️ return {4, 3}
+
+✅ Final Output
+cpp
+Copy
+Edit
+diameter(root) = 4
+This means the longest path has 4 edges.
+
+🧠 Longest Path in Tree:
+
+3 → 8 → 5 → 6 → 9
+This path has:
+
+5 nodes
+
+4 edges ✅
