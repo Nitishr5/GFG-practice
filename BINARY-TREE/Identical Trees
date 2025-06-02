@@ -26,3 +26,101 @@ class Solution {
         }
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Another code same but littile bit diffrent 
+
+#include <iostream>
+using namespace std;
+
+// Define a binary tree node
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = nullptr;
+    }
+};
+
+// Recursive function to check if two trees are identical
+bool isIdentical(Node* root1, Node* root2) {
+    // If both trees are empty
+    if (root1 == nullptr && root2 == nullptr)
+        return true;
+
+    // If one tree is empty and the other is not
+    if (root1 == nullptr || root2 == nullptr)
+        return false;
+
+    // Check current node and both subtrees
+    return (root1->data == root2->data) &&
+           isIdentical(root1->left, root2->left) &&
+           isIdentical(root1->right, root2->right);
+}
+
+// Example usage
+int main() {
+    // Tree 1
+    Node* root1 = new Node(1);
+    root1->left = new Node(2);
+    root1->right = new Node(3);
+
+    // Tree 2
+    Node* root2 = new Node(1);
+    root2->left = new Node(2);
+    root2->right = new Node(3);
+
+    if (isIdentical(root1, root2))
+        cout << "Trees are identical" << endl;
+    else
+        cout << "Trees are not identical" << endl;
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How this Approch to solve this problem using Recursion
+
+🔁 Recursion Ko Simple Tarike Se Samjho (Tree Example Ke Sath):
+Let’s say aapko yeh check karna hai ki do trees identical hain ya nahi.
+
+Sochne ka tareeka yeh ho sakta hai:
+
+💡 Socho:
+Main bas yeh check karta hoon ki current node same hai ya nahi.
+
+Aur fir left subtree aur right subtree ke liye same kaam recursion karega.
