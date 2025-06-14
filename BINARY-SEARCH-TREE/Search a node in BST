@@ -19,3 +19,32 @@ bool search(Node* root, int x) {
             return search(root->right,x);
         }
 }
+
+
+
+ITERATUVE-APPROCH======================================================>>>>>>>>>>>>>>>>>
+
+bool search(Node* root, int x) {
+    // ITRETIVE APPROCH
+    Node* temp=root;
+    
+    while(temp!=NULL)
+    {
+        if(temp->data==x)
+        return true;
+    
+    if(temp->data>x){
+        temp=temp->left;
+    }
+    else
+    {
+        temp=temp->right;
+    }
+    }
+    return false;
+}
+
+
+
+
+
