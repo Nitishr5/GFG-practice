@@ -1,0 +1,33 @@
+Given a 2D integer array mat[][] and a number x, find whether element x is present in the matrix or not.
+
+Examples:
+
+Input: mat[][] = [[6, 23, 21],[4, 45, 32],[69, 11, 87]], x = 32
+Output: true
+Explanation: 32 is present in the matrix, so the output is 1.
+
+
+
+
+
+
+
+class Solution {
+  public:
+    // Function to search a given integer in a matrix.
+    bool searchMatrix(vector<vector<int>> &mat, int x) {
+        // code here
+        int n=mat.size();
+        int m=mat[0].size();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(mat[i][j]==x)
+                return 1;
+               
+            }
+        }
+        return 0;
+    }
+};
