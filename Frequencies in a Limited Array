@@ -1,0 +1,17 @@
+class Solution {
+  public:
+    // Function to count the frequency of all elements from 1 to N in the array.
+    vector<int> frequencyCount(vector<int>& arr) {
+        // code here
+      int n = arr.size();
+    vector<int> result(n, 0); // initialize with 0s
+
+    for (int num : arr) {
+        if (num >= 1 && num <= n) {
+            result[num - 1]++; // map value to index
+        }
+    }
+
+    return result;
+    }
+};
