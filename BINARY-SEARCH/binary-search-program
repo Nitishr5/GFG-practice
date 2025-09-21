@@ -1,0 +1,37 @@
+Input: arr[] = [1, 2, 3, 4, 5], k = 4
+Output: 3
+Explanation: 4 appears at index 3.
+Input: arr[] = [11, 22, 33, 44, 55], k = 445
+Output: -1
+Explanation: 445 is not present.
+
+
+
+
+
+
+
+class Solution {
+  public:
+    int binarysearch(vector<int> &arr, int key) {
+        // code here
+        int n=arr.size();
+        int st=0,end=n-1;
+        int result=-1;// stores the index of first occurrence
+       while(st<=end)
+        {
+         int mid = st + (end - st) / 2;
+            if(arr[mid]==key)
+            {
+            result= mid ;
+            end=mid-1; // Keep searching left
+            }
+            else if(arr[mid]<key){
+            st=mid+1;
+            }else {
+            end=mid-1;
+            }
+        }
+         return result;
+    }
+};
