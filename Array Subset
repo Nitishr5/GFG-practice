@@ -35,3 +35,38 @@ class Solution {
     return true;
     }
 };
+
+
+
+
+
+
+
+
+
+
+OTHER APPROCH USING SORT AND THEN MATCH ===============================>>>>>>>>>>>>
+
+class Solution {
+  public:
+    // Function to check if b is a subset of a
+    bool isSubset(vector<int> &A, vector<int> &B) {
+        // Your code here
+        sort(A.begin(), A.end());
+    sort(B.begin(), B.end());
+
+    int i = 0, j = 0;
+    while (i < A.size() && j < B.size()) {
+        if (A[i] == B[j]) {
+            i++;
+            j++;
+        } else if (A[i] < B[j]) {
+            i++;
+        } else {
+            return false; // B[j] not in A
+        }
+    }
+
+    return (j == B.size()); // True if all elements of B were matched
+    }
+};
