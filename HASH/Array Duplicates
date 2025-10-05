@@ -1,0 +1,37 @@
+Input: arr[] = [2, 3, 1, 2, 3]
+Output: [2, 3] 
+Explanation: 2 and 3 occur more than once in the given array.
+Input: arr[] = [3, 1, 2] 
+Output: []
+Explanation: There is no repeating element in the array, so the output is empty.
+
+
+
+
+
+
+
+
+
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& arr) {
+        unordered_map<int, int> freq;
+        vector<int> result;
+
+        // Count frequency of each element
+        for (int num : arr) {
+            freq[num]++;
+        }
+
+        // Collect elements that appear more than once
+        for (auto& entry : freq) {
+            if (entry.second > 1) {
+                result.push_back(entry.first);
+            }
+        }
+
+        return result;
+    }
+};
