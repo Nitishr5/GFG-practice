@@ -1,0 +1,24 @@
+nput: n = 12
+Output: 2
+Explanation: 12 has 2 digits
+Input: n = 456
+Output: 3
+Explanation: 456 has 3 digits
+
+
+
+
+
+class Solution {
+  public:
+    int countDigits(int n) {
+        // code here
+        int count=0;
+        while(n>0){
+            n/=10;
+            count++;
+            
+        }
+        return count;
+    }
+};
